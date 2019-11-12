@@ -48,11 +48,6 @@ const Home: React.FC<Props> = () => {
         <Input type={'text'} placeholder={'Placeholder text'} />
         <Input type={'password'} placeholder={'Placeholder password'} />
         <LogoHeticSvg />
-        <StudentList students={[
-          {firstName: 'Pierre', lastName: 'Turnbull', specialties: ['VueJS', 'NestJS', 'Docker']},
-          {firstName: 'Salah', lastName: 'Lamkadem', specialties: ['TS', 'Responsive']},
-          {firstName: 'Vincent', lastName: 'Marlot', specialties: ['Design']}
-        ]} />
       </StyledContent>
     </StyledHomeContainer>
   );
