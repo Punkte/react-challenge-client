@@ -41,8 +41,6 @@ const Home: React.FC<Props> = () => {
       <StyledHeaderSvg />
       <StyledContent>
         <Title>Annuaire HETIC</Title>
-        <StudentCard backgroundColor={'#E2E2E2'} specialties={['Expert JS', 'PHP addict', 'Figma lover']} />
-        <StudentCard specialties={['Bon à rien']} />
         <Text variant="default">Default text</Text>
         <Text variant="error">Error type text</Text>
         <Button>Se connecter</Button>
