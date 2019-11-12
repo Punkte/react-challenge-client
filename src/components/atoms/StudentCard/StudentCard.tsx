@@ -2,8 +2,10 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  specialties?: string[] | null;
-  backgroundColor?: string | null;
+  firstName?: string;
+  lastName?: string;
+  specialties?: string[];
+  backgroundColor?: string;
 }
 
 const StyledWrapper = styled.div<Props>`
@@ -54,8 +56,8 @@ export const StudentCard: React.FC<Props> = (props) => {
   return (
     <StyledWrapper backgroundColor={props.backgroundColor}>
       <StyledName>
-        <StyledFirstName>Prénom</StyledFirstName>
-        <StyledLastName>Nom</StyledLastName>
+        <StyledFirstName>{props.firstName}</StyledFirstName>
+        <StyledLastName>{props.lastName}</StyledLastName>
       </StyledName>
       <StyledSpecialties>
         {props.specialties && props.specialties.slice(0, 2).map((specialty, index) => <StyledSpecialty key={index}>{specialty}</StyledSpecialty>)}
