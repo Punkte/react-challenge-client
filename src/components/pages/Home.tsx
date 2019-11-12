@@ -8,6 +8,7 @@ import { Button } from 'components/atoms/Button/Button';
 import { Title } from 'components/atoms/Title/Title';
 import { Text } from 'components/atoms/Text/Text';
 import { Input } from 'components/atoms/Input/Input';
+import { StudentList } from 'components/atoms/StudentList/StudentList';
 
 const StyledHeaderSvg = styled(HeaderSvg)`
   position: absolute;
@@ -39,7 +40,7 @@ const Home: React.FC<Props> = () => {
     <StyledHomeContainer>
       <StyledHeaderSvg />
       <StyledContent>
-        <Title>Title</Title>
+        <Title>Annuaire HETIC</Title>
         <Text variant="default">Default text</Text>
         <Text variant="error">Error type text</Text>
         <Button>Se connecter</Button>
