@@ -8,7 +8,7 @@ import { Button } from 'components/atoms/Button/Button';
 import { Title } from 'components/atoms/Title/Title';
 import { Text } from 'components/atoms/Text/Text';
 import { Input } from 'components/atoms/Input/Input';
-import { StudentCard } from 'components/atoms/StudentCard/StudentCard';
+import { StudentList } from 'components/atoms/StudentList/StudentList';
 
 const StyledHeaderSvg = styled(HeaderSvg)`
   position: absolute;
@@ -48,6 +48,11 @@ const Home: React.FC<Props> = () => {
         <Input type={'text'} placeholder={'Placeholder text'} />
         <Input type={'password'} placeholder={'Placeholder password'} />
         <LogoHeticSvg />
+        <StudentList students={[
+          {firstName: 'Pierre', lastName: 'Turnbull', specialties: ['VueJS', 'NestJS', 'Docker']},
+          {firstName: 'Salah', lastName: 'Lamkadem', specialties: ['TS', 'Responsive']},
+          {firstName: 'Vincent', lastName: 'Marlot', specialties: ['Design']}
+        ]} />
       </StyledContent>
     </StyledHomeContainer>
   );
