@@ -1,12 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { StudentCard } from '../StudentCard/StudentCard';
-
-interface Student {
-  firstName: string;
-  lastName: string;
-  specialties: string[];
-}
+import { Student } from '../../../models/Student';
 
 interface Props {
   students: Student[];

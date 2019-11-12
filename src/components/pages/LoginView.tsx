@@ -28,16 +28,16 @@ const StyledContent = styled(Grid)`
   width: 100%;
 `;
 
-const StyledHomeContainer = styled(Grid)`
+const StyledLoginViewContainer = styled(Grid)`
   align-items: center;
   justify-content: center;
 `;
 
 interface Props {}
 
-const Home: React.FC<Props> = () => {
+const LoginView: React.FC<Props> = () => {
   return (
-    <StyledHomeContainer>
+    <StyledLoginViewContainer>
       <StyledHeaderSvg />
       <StyledContent>
         <Title>Annuaire HETIC</Title>
@@ -49,8 +49,8 @@ const Home: React.FC<Props> = () => {
         <Input type={'password'} placeholder={'Placeholder password'} />
         <LogoHeticSvg />
       </StyledContent>
-    </StyledHomeContainer>
+    </StyledLoginViewContainer>
   );
 };
 
-export default Home;
+export default LoginView;
