@@ -8,7 +8,7 @@ interface Props {
 
 const StyledButton = styled<any>(motion.button)`
   border-radius: 56px;
-  border: 1px solid transparent;
+  border: none;
   padding: 18px;
   font-family: Roboto;
   font-style: normal;

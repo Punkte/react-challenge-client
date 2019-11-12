@@ -9,11 +9,9 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Router>
-        <>
-          <Route path="/">
-            <Home />
-          </Route>
-        </>
+        <Route path="/">
+          <Home />
+        </Route>
       </Router>
     </div>
   );
