@@ -12,7 +12,7 @@ const StyledTitle = styled.span<Props>`
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0.03em;
-  color: #4e4e56;
+  color: rgba(31, 31, 31, 0.47);
 
   ${props =>
     props.variant === 'error' &&

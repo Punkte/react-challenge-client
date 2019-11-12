@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-import { SimpleTextField, SelectField } from '../../configs/fields/fields';
+import { SimpleTextField, SelectField } from '../../../configs/fields/fields';
 
 interface Props {}
 
@@ -20,6 +20,8 @@ const StyledInputContainer = styled.div`
   border: 1px solid rgba(39, 172, 139, 0.5);
   box-sizing: border-box;
   border-radius: 40px;
+  max-width: 330px;
+  width: 330px;
 `;
 
 export const Input: React.FC<SimpleTextField | SelectField> = ({

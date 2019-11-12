@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 interface Props {
-  type?: 'filled' | 'outlined';
+  variant?: 'filled' | 'outlined';
+  type?: string;
 }
 
 const StyledButton = styled<any>(motion.button)`
@@ -15,6 +16,8 @@ const StyledButton = styled<any>(motion.button)`
   font-weight: bold;
   font-size: 16px;
   line-height: 19px;
+  max-width: 330px;
+  width: 330px;
 
   &:hover {
     cursor: pointer;
@@ -22,29 +25,21 @@ const StyledButton = styled<any>(motion.button)`
 
 //   If props.type is not passed give default style
   ${props =>
-    !props.type &&
+    !props.variant &&
     css`
-      background: linear-gradient(
-        90deg,
-        #27ac8b 0%,
-        rgba(0, 255, 151, 0.58) 100%
-      );
+      background: linear-gradient(90deg, #27ac8b 0%, #64f9bd 100%);
       color: #ffffff;
     `}
 
   ${props =>
-    props.type === 'filled' &&
+    props.variant === 'filled' &&
     css`
-      background: linear-gradient(
-        90deg,
-        #27ac8b 0%,
-        rgba(0, 255, 151, 0.58) 100%
-      );
+      background: linear-gradient(90deg, #27ac8b 0%, #64f9bd 100%);
       color: #ffffff;
     `}
 
   ${props =>
-    props.type === 'outlined' &&
+    props.variant === 'outlined' &&
     css`
       border-color: #93d5c5;
       background: white;

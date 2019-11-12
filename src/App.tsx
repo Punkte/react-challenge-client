@@ -11,15 +11,13 @@ const App: React.FC = () => {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/login">
+          <Route exact path={['/login', '/inscription']}>
             <LoginView />
           </Route>
           <Route exact path="/list">
             <StudentListView />
           </Route>
-          <Route>
-            La ressource demandée n'existe pas.
-          </Route>
+          <Route>La ressource demandée n'existe pas.</Route>
         </Switch>
       </Router>
     </div>
