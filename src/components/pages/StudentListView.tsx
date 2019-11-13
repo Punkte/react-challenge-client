@@ -39,7 +39,7 @@ export default class StudentListView extends React.Component<Props, State> {
       students: data.map(dataItem => ({
         firstName: dataItem.first_name,
         lastName: dataItem.last_name,
-        specialties: dataItem.skills
+        skills: dataItem.skills
       }))
     })
   }

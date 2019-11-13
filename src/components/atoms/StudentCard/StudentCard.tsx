@@ -4,14 +4,14 @@ import styled from 'styled-components';
 interface Props {
   firstName?: string;
   lastName?: string;
-  specialties?: string[];
+  skills?: string[];
   backgroundColor?: string;
 }
 
 const StyledWrapper = styled.div<Props>`
   min-height: 50px;
   width: 100%;
-  background-color: ${props => { console.log(props.specialties); return props.backgroundColor || 'white' }};
+  background-color: ${props => { console.log(props.skills); return props.backgroundColor || 'white' }};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -39,14 +39,14 @@ const StyledLastName = styled.div`
   font-weight: 500;
 `;
 
-const StyledSpecialties = styled.div`
+const StyledSkills = styled.div`
   display: flex;
   flex-direction: column;
   text-align: right;
   align-self: center;
 `;
 
-const StyledSpecialty = styled.div`
+const StyledSkill = styled.div`
   color: #4E4E56;
   font-size: 12px;
   font-weight: 500;
@@ -59,9 +59,9 @@ export const StudentCard: React.FC<Props> = (props) => {
         <StyledFirstName>{props.firstName}</StyledFirstName>
         <StyledLastName>{props.lastName}</StyledLastName>
       </StyledName>
-      <StyledSpecialties>
-        {props.specialties && props.specialties.slice(0, 2).map((specialty, index) => <StyledSpecialty key={index}>{specialty}</StyledSpecialty>)}
-      </StyledSpecialties>
+      <StyledSkills>
+        {props.skills && props.skills.slice(0, 2).map((skill, index) => <StyledSkill key={index}>{skill}</StyledSkill>)}
+      </StyledSkills>
     </StyledWrapper>
   );
 };
