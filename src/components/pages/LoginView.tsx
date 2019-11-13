@@ -52,8 +52,6 @@ const StyledLoginViewContainer = styled(Grid)`
 interface Props {}
 
 const LoginView: React.FC<Props> = props => {
-  console.log(props);
-
   const onChange = (value: SelectItemField) => {
     console.log(value);
   };
