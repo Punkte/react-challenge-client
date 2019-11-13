@@ -4,7 +4,7 @@ import { FormationArray, FormationEnum } from './formation.enum';
 export interface SimpleTextField {
   title?: string;
   type: string;
-  key?: string;
+  key: string;
   placeholder?: string;
   required?: boolean;
 }
@@ -53,6 +53,7 @@ export const fields: FieldsInterface = {
       {
         type: 'select',
         key: 'user_type',
+        placeholder: 'Étudiant ou intervenant',
         options: [
           {
             label: 'Étudiant',
@@ -61,6 +62,10 @@ export const fields: FieldsInterface = {
           {
             label: 'Intervenant',
             value: 'intervenant',
+          },
+          {
+            label: 'Intervdenant',
+            value: 'intervdenant',
           },
         ],
         required: true,
@@ -96,6 +101,7 @@ export const fields: FieldsInterface = {
     fields: [
       {
         title: 'Quelle-est votre formation ?',
+        placeholder: 'Formation',
         type: 'select',
         key: 'formation',
         options: FormationArray,
@@ -103,6 +109,7 @@ export const fields: FieldsInterface = {
       },
       {
         title: 'Votre année de promotion',
+        placeholder: 'Promotion',
         type: 'select',
         key: 'promo',
         options: [
@@ -123,6 +130,7 @@ export const fields: FieldsInterface = {
       },
       {
         title: 'Dans quel groupe êtes-vous ?',
+        placeholder: 'Groupe',
         type: 'select',
         key: 'groupe',
         options: [
@@ -143,6 +151,7 @@ export const fields: FieldsInterface = {
       },
       {
         title: 'Saisissez un court descriptif de votre cursus',
+        placeholder: 'Cursus',
         type: 'textarea',
         key: 'description',
         options: [
