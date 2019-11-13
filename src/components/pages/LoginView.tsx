@@ -15,6 +15,7 @@ import {
   SelectField,
   SelectItemField,
 } from '../../configs/fields/fields';
+import { withLoginContext } from 'components/context/Login/LoginContext';
 
 const StyledHeaderSvg = styled(HeaderSvg)`
   position: absolute;
@@ -50,7 +51,7 @@ const StyledLoginViewContainer = styled(Grid)`
 
 interface Props {}
 
-const LoginView: React.FC<Props> = () => {
+const LoginView: React.FC<Props> = props => {
   const onChange = (value: SelectItemField) => {
     console.log(value);
   };
@@ -116,4 +117,4 @@ const LoginView: React.FC<Props> = () => {
   );
 };
 
-export default LoginView;
+export default withLoginContext(LoginView);
