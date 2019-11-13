@@ -37,7 +37,7 @@ export const StudentList: React.FC<Props> = (props) => {
             backgroundColor={index % 2 === 0 ? '#F3F3F3' : ''}
             firstName={student.firstName}
             lastName={student.lastName}
-            specialties={student.specialties}
+            skills={student.skills}
           ></StudentCard>
         ))
         : <StyledEmpty>Aucun étudiant ne correspond à la recherche.</StyledEmpty>
