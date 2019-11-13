@@ -2,9 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-import { SimpleTextField, SelectField } from '../../../configs/fields/fields';
+import {
+  SimpleTextField,
+  SelectField,
+  SelectItemField,
+} from '../../../configs/fields/fields';
 
-interface Props {}
+interface Props {
+  onChange: (value: SelectItemField) => void;
+}
 
 const StyledInput = styled(motion.input)`
   background: #ffffff;
@@ -24,16 +30,21 @@ const StyledInputContainer = styled.div`
   width: 330px;
 `;
 
-export const Input: React.FC<SimpleTextField | SelectField> = ({
+export const Input: React.FC<Props & SimpleTextField | Props & SelectField> = ({
   placeholder,
   children,
   key,
   title,
   type,
+  onChange,
 }) => {
   return (
     <StyledInputContainer>
-      <StyledInput type={type} placeholder={placeholder} />
+      <StyledInput
+        type={type}
+        placeholder={placeholder}
+        onBlur={e => onChange({ label: key, value: e.target.value })}
+      />
     </StyledInputContainer>
   );
 };

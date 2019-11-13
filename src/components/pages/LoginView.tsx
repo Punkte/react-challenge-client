@@ -10,7 +10,11 @@ import { Text } from 'components/atoms/Text/Text';
 import { StudentList } from 'components/atoms/StudentList/StudentList';
 import { InputSwitcher } from 'components/atoms/InputSwitcher/InputSwitcher';
 
-import { fields, SelectField } from '../../configs/fields/fields';
+import {
+  fields,
+  SelectField,
+  SelectItemField,
+} from '../../configs/fields/fields';
 
 const StyledHeaderSvg = styled(HeaderSvg)`
   position: absolute;
@@ -47,16 +51,32 @@ const StyledLoginViewContainer = styled(Grid)`
 interface Props {}
 
 const LoginView: React.FC<Props> = () => {
+  const onChange = (value: SelectItemField) => {
+    console.log(value);
+  };
+
   let renderFields = (() => {
     if (window.location.pathname === '/inscription') {
       return fields.inscription.fields.map(
         (field: SelectField, index: number) => {
-          return <InputSwitcher field={field} />;
+          return (
+            <InputSwitcher
+              field={field}
+              key={'inputSwitcher_' + field.key}
+              onChange={onChange}
+            />
+          );
         },
       );
     } else {
       return fields.login.fields.map((field: SelectField, index: number) => {
-        return <InputSwitcher field={field} />;
+        return (
+          <InputSwitcher
+            field={field}
+            key={'inputSwitcher_' + field.key}
+            onChange={onChange}
+          />
+        );
       });
     }
   })();
