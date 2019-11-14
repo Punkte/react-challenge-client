@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import LoginView from 'components/pages/LoginView';
 import StudentListView from 'components/pages/StudentListView';
 import LoginProvider from 'components/context/Login/LoginProvider';
+import LoginSteps from 'components/pages/LoginSteps';
 
 import './App.css';
 
@@ -14,7 +15,7 @@ const App: React.FC = () => {
         <Router>
           <Switch>
             <Route exact path={['/login', '/inscription']}>
-              <LoginView />
+              <LoginSteps />
             </Route>
             <Route exact path="/list">
               <StudentListView />

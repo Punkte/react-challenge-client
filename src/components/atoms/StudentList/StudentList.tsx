@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-import { StudentCard } from '../StudentCard/StudentCard';
-import { Student } from '../../../models/Student';
+import { StudentCard } from '../StudentCard/StudentCard';
+import { StudentListItem } from '../../../models/StudentListItem';
 
 interface Props {
-  students: Student[];
+  students: StudentListItem[];
 }
 
 const StyledWrapper = styled.div`
@@ -14,24 +14,24 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledBorder = styled.div`
-  background: linear-gradient(129.33deg, #79DCBC -17%, #2FB992 95.97%);
+  background: linear-gradient(129.33deg, #79dcbc -17%, #2fb992 95.97%);
   height: 11px;
 `;
 
 const StyledEmpty = styled.div`
   padding: 15px;
   text-align: center;
-  color: #4E4E56;
+  color: #4e4e56;
   font-size: 12px;
   font-weight: 500;
 `;
 
-export const StudentList: React.FC<Props> = (props) => {
+export const StudentList: React.FC<Props> = props => {
   return (
     <StyledWrapper>
       <StyledBorder />
-      {props.students.length
-        ? props.students.map((student, index) => (
+      {props.students.length ? (
+        props.students.map((student, index) => (
           <StudentCard
             key={index}
             backgroundColor={index % 2 === 0 ? '#F3F3F3' : ''}
@@ -40,8 +40,9 @@ export const StudentList: React.FC<Props> = (props) => {
             skills={student.skills}
           ></StudentCard>
         ))
-        : <StyledEmpty>Aucun étudiant ne correspond à la recherche.</StyledEmpty>
-      }
+      ) : (
+        <StyledEmpty>Aucun étudiant ne correspond à la recherche.</StyledEmpty>
+      )}
       <StyledBorder />
     </StyledWrapper>
   );

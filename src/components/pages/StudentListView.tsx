@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { PageTitle } from '../atoms/PageTitle/PageTitle'
 import { StudentList } from 'components/atoms/StudentList/StudentList';
-import { Student } from '../../models/Student';
+import {StudentListItem } from '../../models/StudentListItem';
 
 
 interface Props {
-  students?: Student[];
+  students?: StudentListItem[];
 }
 
 interface State {
-  students: Student[]
+  students: StudentListItem[]
 }
 
 const StyledWrapper = styled.div`

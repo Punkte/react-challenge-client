@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 
 interface Props {
   variant: 'error' | 'warning' | 'success' | 'default';
+  style?: any;
+  onClick?: any;
 }
 
 const StyledTitle = styled.span<Props>`
