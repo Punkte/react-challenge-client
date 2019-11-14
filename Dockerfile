@@ -3,7 +3,7 @@ FROM node:12.2.0-alpine as build
 
 WORKDIR /home/app
 
-COPY package*.json ./
+COPY package.json ./
 
 RUN npm install
 
@@ -13,6 +13,11 @@ RUN npm run build
 
 # nginx production environment
 FROM nginx:1.16.0-alpine
+
+
+RUN rm -rf /etc/nginx/conf.d
+
+COPY ./conf /etc/nginx
 
 WORKDIR /usr/share/nginx/html
 
