@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { StudentCard } from '../StudentCard/StudentCard';
-import { Student } from '../../../models/Student';
+import { StudentModel } from '../../../models/Student.model';
 
 interface Props {
-  students: Student[];
+  students: StudentModel[];
 }
 
 const StyledWrapper = styled.div`

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 const StyledWrapper = styled.div<Props>`
   min-height: 50px;
   width: 100%;
-  background-color: ${props => { console.log(props.skills); return props.backgroundColor || 'white' }};
+  background-color: ${props => props.backgroundColor || 'white'};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
