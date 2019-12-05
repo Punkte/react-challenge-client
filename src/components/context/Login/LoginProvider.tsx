@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LoginContext } from './LoginContext';
-import { IStudent } from 'models/Student';
+import { IStudent } from 'models/Student.model';
 
 const LoginProvider = ({ children }: any) => {
   const [isLogged, setLogin] = useState(false);
