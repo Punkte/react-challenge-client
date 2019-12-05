@@ -26,8 +26,8 @@ const StyledInputContainer = styled.div`
   border: 1px solid rgba(39, 172, 139, 0.5);
   box-sizing: border-box;
   border-radius: 40px;
-  max-width: 330px;
-  width: 330px;
+  // max-width: 330px;
+  width: 100%;
 `;
 
 export const Input: React.FC<Props & SimpleTextField | Props & SelectField> = ({

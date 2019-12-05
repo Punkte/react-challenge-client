@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 import { Grid } from 'components/atoms/Grid/Grid';
 import { HeaderSvg } from 'components/assets/HeaderSvg';
@@ -31,22 +32,23 @@ const StyledHeaderSvg = styled(HeaderSvg)`
 `;
 
 const StyledContent = styled(Grid)`
-  max-width: 960px;
   width: 100%;
   background: #ffffff;
   box-shadow: 0px 4px 74px rgba(0, 0, 0, 0.06);
-  border-radius: 10px;
+  border-radius: 0px;
   padding: 46px;
   grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 34px rgba(0, 0, 0, 0.15);
 `;
 
-const StyledLoginViewContainer = styled(Grid)`
-  align-items: center;
-  justify-content: center;
-  grid-auto-columns: 100%;
-  grid-auto-rows: 250px min-content;
-  height: 100vh;
-  padding: 70px 100px;
+const StyledLoginViewContainer = styled(motion.div)`
+  display: grid;
+  gap: 200px;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 100%;
 `;
 
 interface Props {}
@@ -56,64 +58,156 @@ const LoginView: React.FC<Props> = props => {
     console.log(value);
   };
 
-  let renderFields = (() => {
-    if (window.location.pathname === '/inscription') {
-      return fields.inscription.fields.map(
-        (field: SelectField, index: number) => {
-          return (
-            <InputSwitcher
-              field={field}
-              key={'inputSwitcher_' + field.key}
-              onChange={onChange}
-            />
-          );
-        },
-      );
-    } else {
-      return fields.login.fields.map((field: SelectField, index: number) => {
-        return (
-          <InputSwitcher
-            field={field}
-            key={'inputSwitcher_' + field.key}
-            onChange={onChange}
-          />
-        );
-      });
-    }
-  })();
+  const y = useSpring(0, { stiffness: 100, damping: 150 });
 
   return (
-    <StyledLoginViewContainer>
-      <StyledHeaderSvg />
-      <LogoHeticSvg />
-      <form>
-        <StyledContent flow="column">
+    <>
+      <div>
+        <motion.div
+        // style={{
+        //   y,
+        // }}
+        >
+          <StyledHeaderSvg />
+        </motion.div>
+      </div>
+      <StyledLoginViewContainer
+        style={{
+          y,
+        }}
+      >
+        <Grid gap={100} style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <LogoHeticSvg />
+          <StyledContent flow="column">
+            <Grid
+              style={{
+                gridAutoFlow: 'row',
+                gridAutoRows: 'min-content',
+                textAlign: 'left',
+              }}
+              gap={24}
+            >
+              <Title>Bonjour !</Title>
+              <hr
+                style={{
+                  background: '#70E3B9',
+                  width: 35,
+                  height: 5,
+                  border: 'none',
+                  margin: 0,
+                }}
+              />
+              <Text
+                variant="default"
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: 18,
+                  color: '#969696',
+                }}
+              >
+                Etudiant à Hetic ? C’est ici que vous formerez vos groupes !
+              </Text>
+              <img
+                style={{ margin: '0 auto', maxWidth: 200 }}
+                src="/assets/images/illu_group.svg"
+                alt="illustration groupe d'étudiant"
+              />
+            </Grid>
+            <form>
+              <Grid
+                gap={20}
+                style={{
+                  justifyContent: 'center',
+                  gridTemplateColumns: '100%',
+                }}
+              >
+                <Text
+                  variant="default"
+                  style={{
+                    fontWeight: 'bold',
+                    fontSize: 18,
+                    margin: 0,
+                    textAlign: 'left',
+                    color: '#4E4E56',
+                  }}
+                >
+                  Je me connecte
+                </Text>
+                {fields.login.fields.map(
+                  (field: SelectField, index: number) => {
+                    return (
+                      <InputSwitcher
+                        field={field}
+                        key={'inputSwitcher_' + field.key}
+                        onChange={onChange}
+                      />
+                    );
+                  },
+                )}
+                <Button variant="filled" type="submit">
+                  Se connecter
+                </Button>
+                <Grid>
+                  <Text variant="default">Pas encore inscrit ? </Text>
+                  <Text variant="success" onClick={() => y.set(-800)}>
+                    S’inscrire
+                  </Text>
+                </Grid>
+              </Grid>
+            </form>
+          </StyledContent>
+        </Grid>
+
+        <Grid
+          style={{ height: 'calc(100vh - 200px)', gridTemplateColumns: '100%' }}
+        >
           <Grid
-            style={{
-              gridAutoFlow: 'row',
-              gridAutoRows: 'min-content',
-              textAlign: 'left',
-            }}
-            gap={24}
+            gap={100}
+            style={{ gridAutoRows: 'min-content', gridTemplateColumns: '100%' }}
           >
-            <Title>Bonjour !</Title>
-            <Text variant="default">
-              Etudiant à Hetic ? C’est ici que vous formerez vos groupes !{' '}
-            </Text>
-          </Grid>
-          <Grid gap={20} style={{ justifyContent: 'center', paddingTop: 75 }}>
-            {renderFields}
-            <Button variant="filled" type="submit">
-              Se connecter
-            </Button>
-            <Grid>
-              <Text variant="default">Pas encore inscrit ? </Text>
-              <Text variant="success">S’inscrire</Text>
+            <Title>Inscription</Title>
+            <Grid
+              flow="column"
+              gap={26}
+              style={{
+                gridAutoRows: 'min-content',
+                gridTemplateColumns: '1fr 1fr',
+                gridTemplateRows: 'auto auto auto',
+                maxWidth: 700,
+                margin: '0 auto',
+              }}
+            >
+              {fields.inscription.fields.map(
+                (field: SelectField, index: number) => {
+                  return (
+                    <InputSwitcher
+                      field={field}
+                      key={'inputSwitcher_' + field.key}
+                      onChange={onChange}
+                    />
+                  );
+                },
+              )}
+            </Grid>
+            <Grid
+              gap={24}
+              style={{
+                margin: '0 auto',
+                gridTemplateColumns: 330,
+                justifyContent: 'center',
+              }}
+            >
+              <Button variant="filled" type="submit">
+                S'inscrire
+              </Button>
+              <Button variant="outlined" onClick={() => y.set(0)}>
+                Annuler
+              </Button>
             </Grid>
           </Grid>
-        </StyledContent>
-      </form>
-    </StyledLoginViewContainer>
+        </Grid>
+      </StyledLoginViewContainer>
+    </>
   );
 };
 

@@ -5,19 +5,20 @@ import { motion } from 'framer-motion';
 interface Props {
   variant?: 'filled' | 'outlined';
   type?: string;
+  onClick?: any;
 }
 
 const StyledButton = styled<any>(motion.button)`
   border-radius: 56px;
-  border: none;
+  border: 1px solid transparent;
   padding: 18px;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 19px;
-  max-width: 330px;
-  width: 330px;
+  // max-width: 330px;
+  // width: 330px;
 
   &:hover {
     cursor: pointer;

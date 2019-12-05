@@ -2,9 +2,19 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PageTitle } from '../atoms/PageTitle/PageTitle'
 import { StudentList } from 'components/atoms/StudentList/StudentList';
-import Filter from '../atoms/Filter/Filter'
-import { StudentModel } from '../../models/Student.model';
-import { FiltersModel } from '../../models/Filters.model'
+import {StudentListItem } from '../../models/StudentListItem';
+import { IStudent } from 'models/Student.model';
+import { FiltersModel } from 'models/Filters.model';
+import Filter from 'components/atoms/Filter/Filter';
+
+
+interface Props {
+  students?: StudentListItem[];
+}
+
+interface State {
+  students: StudentListItem[]
+}
 
 const StyledWrapper = styled.div`
   padding: 50px 10vw;
@@ -12,7 +22,7 @@ const StyledWrapper = styled.div`
 
 const StyledStudentListWrapper = styled.div``;
 
-const students: StudentModel[] = [
+const students: IStudent[] | any = [
   { first_name: 'Jean', last_name: 'File', skills: [ 'Design' ] },
   { first_name: 'Simon', last_name: 'Tesquieu', skills: [ 'UX', 'UI' ] },
   { first_name: 'Albert', last_name: 'Line', skills: [ 'UI / UX', 'Design', 'JS' ] },
