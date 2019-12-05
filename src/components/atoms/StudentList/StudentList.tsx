@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { StudentCard } from '../StudentCard/StudentCard';
 import { StudentListItem } from '../../../models/StudentListItem';
