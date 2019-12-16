@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface Props {}
+interface Props {
+  textAlign?: string;
+}
 
-const StyledTitle = styled.span`
+const StyledTitle = styled.span<any>`
   font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
@@ -11,6 +13,7 @@ const StyledTitle = styled.span`
   line-height: 49px;
   letter-spacing: 0.03em;
   color: #4e4e56;
+  text-align: ${props => (props.textAlign ? props.textAlign : 'inherit')};
 `;
 
 export const Title: React.FC<Props> = ({ children, ...props }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StudentCard } from '../StudentCard/StudentCard';
+import { ListItem } from '../../atoms/ListItem/ListItem';
 import { StudentListItem } from '../../../models/StudentListItem';
 
 interface Props {
@@ -32,13 +32,13 @@ export const StudentList: React.FC<Props> = props => {
       <StyledBorder />
       {props.students.length ? (
         props.students.map((student, index) => (
-          <StudentCard
+          <ListItem
             key={index}
             backgroundColor={index % 2 === 0 ? '#F3F3F3' : ''}
             firstName={student.firstName}
             lastName={student.lastName}
             skills={student.skills}
-          ></StudentCard>
+          ></ListItem>
         ))
       ) : (
         <StyledEmpty>Aucun étudiant ne correspond à la recherche.</StyledEmpty>

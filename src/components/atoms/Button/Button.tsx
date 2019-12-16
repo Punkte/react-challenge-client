@@ -6,9 +6,11 @@ interface Props {
   variant?: 'filled' | 'outlined';
   type?: string;
   onClick?: any;
+  style?: any;
 }
 
 const StyledButton = styled<any>(motion.button)`
+  background-origin: border-box !important;
   border-radius: 56px;
   border: 1px solid transparent;
   padding: 18px;
@@ -44,7 +46,7 @@ const StyledButton = styled<any>(motion.button)`
     css`
       border-color: #93d5c5;
       background: white;
-      color: #4e5980;
+      color: #32c497;
     `}
 `;
 

@@ -7,7 +7,7 @@ import { LogoHeticSvg } from 'components/assets/LogoHeticSvg';
 import { Button } from 'components/atoms/Button/Button';
 import { Title } from 'components/atoms/Title/Title';
 import { Text } from 'components/atoms/Text/Text';
-import { StudentList } from 'components/atoms/StudentList/StudentList';
+import { StudentList } from 'components/molecules/StudentList/StudentList';
 import { InputSwitcher } from 'components/atoms/InputSwitcher/InputSwitcher';
 
 import {

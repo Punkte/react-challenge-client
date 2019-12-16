@@ -26,7 +26,7 @@ const StyledName = styled.div`
 
 const StyledFirstName = styled.div`
   text-align: left;
-  color: #4E4E56;
+  color: #4e4e56;
   font-size: 12px;
   font-weight: 500;
 `;
@@ -34,7 +34,7 @@ const StyledFirstName = styled.div`
 const StyledLastName = styled.div`
   text-transform: uppercase;
   text-align: left;
-  color: #4E4E56;
+  color: #4e4e56;
   font-size: 12px;
   font-weight: 500;
 `;
@@ -47,12 +47,12 @@ const StyledSkills = styled.div`
 `;
 
 const StyledSkill = styled.div`
-  color: #4E4E56;
+  color: #4e4e56;
   font-size: 12px;
   font-weight: 500;
 `;
 
-export const StudentCard: React.FC<Props> = (props) => {
+export const ListItem: React.FC<Props> = props => {
   return (
     <StyledWrapper backgroundColor={props.backgroundColor}>
       <StyledName>
@@ -60,7 +60,12 @@ export const StudentCard: React.FC<Props> = (props) => {
         <StyledLastName>{props.lastName}</StyledLastName>
       </StyledName>
       <StyledSkills>
-        {props.skills && props.skills.slice(0, 2).map((skill, index) => <StyledSkill key={index}>{skill}</StyledSkill>)}
+        {props.skills &&
+          props.skills
+            .slice(0, 2)
+            .map((skill, index) => (
+              <StyledSkill key={index}>{skill}</StyledSkill>
+            ))}
       </StyledSkills>
     </StyledWrapper>
   );

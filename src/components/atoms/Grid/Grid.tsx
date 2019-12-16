@@ -7,6 +7,8 @@ interface Props {
   align?: string;
   children: any;
   style?: any;
+  forwardRef?: any;
+  onClick?: any;
 }
 
 const StyledWrapper = styled.div<Props>`
@@ -18,6 +20,10 @@ const StyledWrapper = styled.div<Props>`
   align-items: ${props => props.align || 'inherit'};
 `;
 
-export const Grid: React.FC<Props> = ({ children, ...props }) => {
-  return <StyledWrapper {...props}>{children}</StyledWrapper>;
+export const Grid: React.FC<Props> = ({ children, forwardRef, ...props }) => {
+  return (
+    <StyledWrapper {...props} ref={forwardRef}>
+      {children}
+    </StyledWrapper>
+  );
 };
