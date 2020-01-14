@@ -12,4 +12,5 @@ export interface IStudent {
   pic?: string;
   status?: string;
   group_id?: string;
+  promo?: string;
 }
