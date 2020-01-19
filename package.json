@@ -14,7 +14,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "styled-components": "^4.4.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.0-beta"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
     "@types/react-router-dom": "^5.1.0",
     "@types/styled-components": "^4.1.22"
   }

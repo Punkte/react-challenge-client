@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PageTitle } from '../atoms/PageTitle/PageTitle'
-import { StudentList } from 'components/atoms/StudentList/StudentList';
+import { StudentList } from 'components/molecules/StudentList/StudentList';
 import {StudentListItem } from '../../models/StudentListItem';
 import { IStudent } from 'models/Student.model';
 import { FiltersModel } from 'models/Filters.model';
@@ -57,7 +57,7 @@ const StudentListView: React.FC = () => {
 
   return (
     <StyledWrapper>
-      <PageTitle value={'Liste'} />
+      {/* <PageTitle value={'Liste'} /> */}
       <StyledStudentListWrapper>
         <StudentList students={state.students} />
       </StyledStudentListWrapper>

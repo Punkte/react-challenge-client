@@ -9,8 +9,9 @@
 .App {
   text-align: center;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .App-logo {
