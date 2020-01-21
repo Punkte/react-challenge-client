@@ -3,7 +3,7 @@ import { IStudent } from 'models/Student.model'
 import { ISkill, ISkillUser } from 'models/Skill'
 import { IPromo } from 'models/Promo'
 
-const baseUrl = 'http://localhost:8081/api' || process.env.REACT_APP_API_URL
+const baseUrl = 'http://51.158.109.232:8081/api' || process.env.REACT_APP_API_URL
 
 const getData = async (endpoint: String) => {
   const response = await axios.get(`${baseUrl + endpoint}`)
@@ -20,6 +20,11 @@ const updateData = async (endpoint: String, data: Object) => {
   return await req.data
 }
 
+const deleteData = async (endpoint: String) => {
+  const req = await axios.delete(`${baseUrl + endpoint}`)
+  return await req.data
+}
+
 export const getUsers = async (): Promise<IStudent[]> => await getData('/user')
 export const getUserById = async (id: String): Promise<IStudent> => await getData(`/user/${id}`)
 export const createUser = async (user: IStudent) => await postData('/user', user)
@@ -30,6 +35,7 @@ export const createUser = async (user: IStudent) => await postData('/user', user
  * @param user 
  */
 export const updateUserById = async (id: String, user: any) => await updateData(`/user/${id}`, user)
+export const deleteUserById = async (id: String, user: any) => await deleteData(`/user/${id}`)
 
 
 export const getSkills = async (): Promise<ISkill[]> => await getData('/skill')
