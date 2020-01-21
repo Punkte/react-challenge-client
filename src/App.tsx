@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import StudentListView from 'components/pages/StudentListView';
@@ -7,6 +7,8 @@ import LoginSteps from 'components/pages/LoginSteps';
 import Dashboard from 'components/pages/Dashboard';
 
 import './App.css';
+import api, { getUsers, getPromos, createUser, updateUserById } from 'helpers/api';
+import { ISkillUser, ISkill } from 'models/Skill';
 
 const App: React.FC = () => {
   return (
