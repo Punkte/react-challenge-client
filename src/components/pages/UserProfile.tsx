@@ -84,10 +84,7 @@ const UserProfile = () => {
   return (
     <StyledWrapper>
       <StyledCaption>
-        <StyledImg src={
-          // @ts-ignore
-          user.img
-          } />
+        <StyledImg src={user['img']} />
         <h2>
           { user['first_name'] }<br/>
           { user['last_name'] }
@@ -95,9 +92,9 @@ const UserProfile = () => {
       </StyledCaption>
       <StyledUserInfo>
         <StyledTitle>Cursus</StyledTitle>
-          { !!user.desc && <StyledText>{user.desc}</StyledText> }
+          { !!user['desc'] && <StyledText>{user['desc']}</StyledText> }
         <StyledTitle>E-mail</StyledTitle>
-          { !!user.email && <StyledText>{user.email}</StyledText> }
+          { !!user['email'] && <StyledText>{user['email']}</StyledText> }
         <StyledTitle>Compétences</StyledTitle>
         <StyledListItemContainer>
           { user.skills && user.skills.map((s, i) => (
