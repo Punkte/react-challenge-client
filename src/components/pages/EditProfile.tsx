@@ -138,7 +138,7 @@ const EditProfile = () => {
   return (
     <>
     <StyledWrapper>
-        <StyledImg src={user.img} />
+        <StyledImg src={user['img']} />
       <form onSubmit={() => updateProfile(id, state)}>
         <StyledInput
           defaultValue={user['first_name']}
