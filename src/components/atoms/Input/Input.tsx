@@ -10,6 +10,7 @@ import {
 
 interface Props {
   onChange: (value: SelectItemField) => void;
+  defaultValue?: string;
 }
 
 const StyledInput = styled(motion.input)`
@@ -37,6 +38,7 @@ export const Input: React.FC<Props & SimpleTextField | Props & SelectField> = ({
   title,
   type,
   onChange,
+  defaultValue
 }) => {
   return (
     <StyledInputContainer>
@@ -44,6 +46,7 @@ export const Input: React.FC<Props & SimpleTextField | Props & SelectField> = ({
         type={type}
         placeholder={placeholder}
         onBlur={e => onChange({ label: key, value: e.target.value })}
+        defaultValue={defaultValue}
       />
     </StyledInputContainer>
   );

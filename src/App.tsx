@@ -9,6 +9,8 @@ import Dashboard from 'components/pages/Dashboard';
 import './App.css';
 import api, { getUsers, getPromos, createUser, updateUserById } from 'helpers/api';
 import { ISkillUser, ISkill } from 'models/Skill';
+import UserProfile from 'components/pages/UserProfile';
+import EditProfile from 'components/pages/EditProfile';
 
 const App: React.FC = () => {
   return (
@@ -24,6 +26,12 @@ const App: React.FC = () => {
             </Route>
             <Route exact path="/list">
               <StudentListView />
+            </Route>
+            <Route path="/profile/:id" >
+              <UserProfile />
+            </Route>
+            <Route path="/edit-profile/:id" >
+              <EditProfile />
             </Route>
             <Route>La ressource demandée n'existe pas.</Route>
           </Switch>

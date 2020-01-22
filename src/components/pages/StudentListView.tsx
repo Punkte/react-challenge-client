@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { PageTitle } from '../atoms/PageTitle/PageTitle'
 import { StudentList } from 'components/molecules/StudentList/StudentList';
 import {StudentListItem } from '../../models/StudentListItem';
 import { IStudent } from 'models/Student.model';
 import { FiltersModel } from 'models/Filters.model';
-import Filter from 'components/atoms/Filter/Filter';
+import Filters from 'components/atoms/Filter/Filters';
+import api from 'helpers/api';
+import { IPromo } from 'models/Promo';
+import bg from '../assets/bg.png'
 
 
 interface Props {
@@ -18,60 +21,67 @@ interface State {
 
 const StyledWrapper = styled.div`
   padding: 50px 10vw;
+  min-height: 100vh;
+
+  background-image: url(${bg});
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
-const StyledStudentListWrapper = styled.div``;
-
-const students: IStudent[] | any = [
-  { first_name: 'Jean', last_name: 'File', skills: [ 'Design' ] },
-  { first_name: 'Simon', last_name: 'Tesquieu', skills: [ 'UX', 'UI' ] },
-  { first_name: 'Albert', last_name: 'Line', skills: [ 'UI / UX', 'Design', 'JS' ] },
-  { first_name: 'Sara', last_name: 'Croche', skills: [ 'ExpressJS', 'Docker', 'NestJS' ] },
-  { first_name: 'Tony', last_name: 'Truand', skills: [ 'PHP', 'Docker', 'Laravel' ] }
-].map(dataItem => ({
-  firstName: dataItem.first_name,
-  lastName: dataItem.last_name,
-  skills: dataItem.skills
-}))
-const filters: FiltersModel = {
-  roles: {
-    ['Etudiant']: true,
-    ['Intervenant']: false
-  }
-}
+const StyledStudentListWrapper = styled.div`
+  max-height: 700px;
+  overflow-y: scroll;
+`;
 
 const StudentListView: React.FC = () => {
-  const [state, setState] = useState({ students, filters })
+  const [promos, setPromos] = useState([])
+  const [selectedPromos, setSelectedPromos] = useState([])
+  const [users, setUsers] = useState([])
+  const [filteredUsers, setFilteredUsers] = useState([])
+  useEffect(() => {
+    (async () => {
+      const promosReq: any = await api.get.promos.all()
+      const usersReq: any = await api.get.users.all()
+      setPromos(promosReq)
+      setUsers(usersReq)
+    })()
+  }, [])
+  useEffect(() => {
+    (async () => {
+      setFilteredUsers(users
+        .filter(user => selectedPromos.includes(user.promo))
+        .map(dataItem => ({
+          id: dataItem._id,
+          firstName: dataItem.first_name,
+          lastName: dataItem.last_name,
+          img: dataItem.img
+        }))
+      )
+    })()
+  }, [selectedPromos])
 
-  const handleOnChange = ({ filterKey, criteria }: { filterKey: string, criteria: string }) => {
-    let stateCopy = JSON.parse(JSON.stringify(state))
-    stateCopy.filters[filterKey][criteria] = !stateCopy.filters[filterKey][criteria]
-    setState(stateCopy)
-  }
-
-  const resetFilters = (filterKey: string) => {
-    let stateCopy = JSON.parse(JSON.stringify(state))
-    Object.keys(stateCopy.filters[filterKey]).forEach(criteria => stateCopy.filters[filterKey][criteria] = false)
-    setState(stateCopy)
+  const selectPromos = async ({target: { value }}, id) => {
+    if(!selectedPromos.includes(id)) {
+      setSelectedPromos([...selectedPromos, id ])
+    } else {
+      setSelectedPromos(selectedPromos.filter(el => el !== id))
+    }
   }
 
   return (
     <StyledWrapper>
-      {/* <PageTitle value={'Liste'} /> */}
-      <StyledStudentListWrapper>
-        <StudentList students={state.students} />
-      </StyledStudentListWrapper>
+      <PageTitle value={'Liste'} />
       {
-        Object.keys(state.filters).map((filterKey, index) => (
-          <Filter
-            key={index}
-            title={filterKey}
-            filter={state.filters[filterKey]}
-            handleOnChange={criteria => handleOnChange({ filterKey, criteria })}
-            resetFilters={() => resetFilters(filterKey)}
-          />
-        ))
+      promos.map(({name, _id}) => (
+        <label key={_id}>
+          <input value={name} type="checkbox" onChange={e => selectPromos(e, _id)} checked={selectedPromos.includes(_id)} />
+          {name}
+        </label>
+      ))
       }
+      <StyledStudentListWrapper>
+        <StudentList students={filteredUsers} />
+      </StyledStudentListWrapper>
     </StyledWrapper>
   )
 }

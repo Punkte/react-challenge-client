@@ -25,7 +25,6 @@ const StyledEmpty = styled.div`
   font-size: 12px;
   font-weight: 500;
 `;
-
 export const StudentList: React.FC<Props> = props => {
   return (
     <StyledWrapper>
@@ -37,8 +36,9 @@ export const StudentList: React.FC<Props> = props => {
             backgroundColor={index % 2 === 0 ? '#F3F3F3' : ''}
             firstName={student.firstName}
             lastName={student.lastName}
-            skills={student.skills}
-          ></ListItem>
+            img={student.img}
+            id={student.id}
+          />
         ))
       ) : (
         <StyledEmpty>Aucun étudiant ne correspond à la recherche.</StyledEmpty>
