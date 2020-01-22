@@ -93,7 +93,7 @@ const EditProfile = () => {
   const { id } = useParams()
   const [skills, setSkills] = useState([])
   const [checkedSkills, setCheckedSkills] = useState([])
-  const [state, setState] = useState({})
+  const [userState, setUserState] = useState({})
   useEffect(() => {
     (async () => {
       const userReq = await api.get.users.byId(id)
@@ -109,17 +109,16 @@ const EditProfile = () => {
     })()
   }, [])
   useEffect(() => {
-    console.log('here',checkedSkills)
-    setState({
-      ...state,
+    setUserState({
+      ...userState,
       skills: checkedSkills
         .filter(skill => skill.selected)
         .map(skill => ({skill, rate: 5}))
     })
   }, [checkedSkills])
   const updateValue = (fieldName, e) => {
-    setState({
-      ...state,
+    setUserState({
+      ...userState,
       [fieldName]: e.target.value
     })
   }
@@ -139,7 +138,7 @@ const EditProfile = () => {
     <>
     <StyledWrapper>
         <StyledImg src={user['img']} />
-      <form onSubmit={() => updateProfile(id, state)}>
+      <form onSubmit={() => updateProfile(id, userState)}>
         <StyledInput
           defaultValue={user['first_name']}
           onChange={e => updateValue('first_name', e)}
