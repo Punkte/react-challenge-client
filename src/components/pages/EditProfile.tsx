@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import api from 'helpers/api'
 import bg from '../assets/bg.png'
+import { ISkillUser } from 'models/Skill'
 
 
 const StyledWrapper = styled.div`
@@ -37,18 +38,49 @@ const StyledInput = styled.input`
   border-radius: 40px;
   padding: 18px;
   width: 100%;
+  background-color: ${props => props.checked ? '#f00': ''};
+
   `
 
 const StyledTextarea = styled.textarea`
-background: #ffffff;
-min-height: 300px;
-border: 1px solid rgba(39, 172, 139, 0.5);
-margin-bottom: 8px;
-box-sizing: border-box;
-border-radius: 40px;
-padding: 18px;
-width: 100%;
+  background: #ffffff;
+  min-height: 300px;
+  border: 1px solid rgba(39, 172, 139, 0.5);
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  border-radius: 40px;
+  padding: 18px;
+  width: 100%;
+  `
 
+const StyledListContainer = styled.div`
+  display: flex;
+  
+  .label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    padding: 4px 8px;
+    flex-basis: 0;
+    flex: 1 1 0;
+    flex-wrap: wrap;
+    
+    border-radius: 3px;
+    border: solid 1px #79DCBC;
+
+    text-align: left;
+    cursor: pointer;
+    &--selected {
+      color: #fff;
+      background: linear-gradient(94.71deg, #79DCBC -17%, #2FB992 95.97%);
+    }
+
+    input {
+      -webkit-appearance: none;
+     -moz-appearance: none;
+    }
+  }
 `
 
 const updateProfile = (id, updatedFields) => {
@@ -69,7 +101,11 @@ const EditProfile = () => {
       // @ts-ignore
       setUser(userReq)
       setSkills(skillsReq)
-      setCheckedSkills(skillsReq.map(skill => ({...skill, selected: false})))
+      setCheckedSkills(skillsReq.map(skill => ({
+        ...skill,
+        //@ts-ignore
+        selected:  userReq.skills.map((el: ISkillUser) => el.skill.name).includes(skill.name)
+      })))
     })()
   }, [])
   useEffect(() => {
@@ -120,11 +156,12 @@ const EditProfile = () => {
           onChange={e => updateValue('desc', e)}
           defaultValue={user.desc}
         />
+        <StyledListContainer>
         {
           checkedSkills.length && skills.map((skill, index) => (
-            <label key={index}>
+            <label key={index} className={checkedSkills[index].selected ? 'label label--selected' : 'label'}>
               { skill.name }
-              <StyledInput
+              <input
                 type="checkbox"
                 onChange={() => onSkillsChange(index)}
                 checked={checkedSkills[index].selected}
@@ -132,6 +169,7 @@ const EditProfile = () => {
             </label>
           ))
         }
+        </StyledListContainer>
         <button type="submit">submit</button>
       </form>
     </StyledWrapper>
