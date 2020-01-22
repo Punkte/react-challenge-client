@@ -28,7 +28,7 @@ const StyledHeaderSvg = styled(HeaderSvg)`
   height: 100vh;
   width: 100vw;
   display: flex;
-  align-items start;
+  align-items: start;
 `;
 
 const StyledContent = styled(Grid)`

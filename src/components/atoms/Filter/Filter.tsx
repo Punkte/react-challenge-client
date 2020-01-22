@@ -19,12 +19,12 @@ const StyledHeader = styled.div`
   position: relative;
 `;
 
-const StyledSVG = css`
-  fill: #4E4E56;
-`;
+// const StyledSVG = css`
+//   fill: #4E4E56;
+// `;
 
 const StyledSVGShow = styled.svg`
-  ${StyledSVG}
+  fill: #4E4E56;
   width: 7px;
   height: 7px;
   align-self: center;
@@ -36,7 +36,7 @@ const StyledSVGShowWrapper = styled.div`
 `;
 
 const StyledSVGReset = styled.svg`
-  ${StyledSVG}
+  fill: #4E4E56;
   width: 15px;
   height: 15px;
   align-self: center;
