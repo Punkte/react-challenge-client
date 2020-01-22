@@ -84,7 +84,10 @@ const UserProfile = () => {
   return (
     <StyledWrapper>
       <StyledCaption>
-        <StyledImg src={user.img} />
+        <StyledImg src={
+          // @ts-ignore
+          user.img
+          } />
         <h2>
           { user['first_name'] }<br/>
           { user['last_name'] }
