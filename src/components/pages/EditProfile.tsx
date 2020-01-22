@@ -154,7 +154,7 @@ const EditProfile = () => {
         />
         <StyledTextarea 
           onChange={e => updateValue('desc', e)}
-          defaultValue={user.desc}
+          defaultValue={user['desc']}
         />
         <StyledListContainer>
         {
