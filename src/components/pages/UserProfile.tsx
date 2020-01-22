@@ -97,7 +97,7 @@ const UserProfile = () => {
           { !!user['email'] && <StyledText>{user['email']}</StyledText> }
         <StyledTitle>Compétences</StyledTitle>
         <StyledListItemContainer>
-          { user.skills && user.skills.map((s, i) => (
+          { user['skills'] && user['skills'].map((s, i) => (
             <div key={i}>
               {s.skill.name}
             </div>
